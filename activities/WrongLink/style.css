@@ -1,0 +1,258 @@
+/* Modern, playful, enticing style for kids */
+:root{
+  --bg:#f0f8ff;
+  --card:#fff;
+  --accent:#ff6b6b;
+  --accent-2:#6bc1ff;
+  --muted:#6b7280;
+  --shadow: 0 8px 20px rgba(16,24,40,0.08);
+  --radius:12px;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, #f7fbff 0%, #f0f7ff 50%);
+  color: #07203a;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.site-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 22px;
+  background: linear-gradient(90deg,var(--accent-2), #86d9ff);
+  color: white;
+  clip-path: ellipse(100% 75% at 0 0);
+}
+.brand { display:flex; gap:12px; align-items:center; }
+.logo {
+  width:56px; height:56px;
+  border-radius:12px;
+  background: radial-gradient(circle at 30% 20%, #ffd37d, #ff7a7a);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  color:#08212b;
+  box-shadow: 0 6px 18px rgba(16,24,40,0.12);
+  font-size:20px;
+}
+.site-header h1 { margin:0; font-size:1.1rem; line-height:1; }
+.tagline { margin:0; font-size:0.85rem; opacity:0.95; }
+
+.account-btn {
+  background: rgba(255,255,255,0.12);
+  border: none;
+  color: white;
+  padding:8px 12px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+main { padding:28px 20px; max-width:1080px; margin:0 auto; }
+.hero { text-align:center; margin-bottom:18px; color:#033047; }
+.hero h2 { margin:0 0 6px 0; font-size:1.4rem; }
+.hero p { margin:0; color:var(--muted); }
+
+.catalog {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap:18px;
+  margin-top:16px;
+}
+
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding:12px;
+  box-shadow: var(--shadow);
+  transition: transform .18s cubic-bezier(.2,.9,.2,1), box-shadow .18s;
+  position:relative;
+  overflow:visible;
+}
+.card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(16,24,40,0.12); }
+
+.thumb {
+  position:relative;
+  border-radius:10px;
+  overflow:hidden;
+  height:190px; /* was 130 px*/
+  background: linear-gradient(180deg,#eef8ff, #f6fbff);
+  transition: transform 0.4s ease;
+}
+.thumb img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transform: scale(1);
+  transition: transform .28s ease;
+}
+.card:hover .thumb img { transform: scale(1.06); }
+
+.play {
+  position:absolute;
+  right:10px;
+  bottom:10px;
+  background: linear-gradient(180deg,var(--accent), #ff8e8e);
+  color:white;
+  border:none;
+  width:44px; height:44px;
+  border-radius:10px;
+  font-size:18px;
+  box-shadow: 0 8px 18px rgba(255,107,107,0.22);
+  cursor:pointer;
+}
+.badge {
+  position:absolute;
+  left:10px;
+  top:10px;
+  background: rgba(0,0,0,0.6);
+  color:white;
+  padding:6px 8px;
+  border-radius:999px;
+  font-weight:700;
+  font-size:0.8rem;
+  box-shadow: 0 6px 12px rgba(3,48,77,0.12);
+}
+
+.card h3 { margin:10px 0 4px 0; font-size:1.05rem; }
+.meta { margin:0; color:var(--muted); font-size:0.9rem; }
+
+.actions { display:flex; gap:8px; margin-top:10px; }
+.watch-btn {
+  flex:1;
+  background: linear-gradient(90deg,var(--accent), #ff8e8e);
+  color:white;
+  border:none;
+  padding:10px;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow: 0 10px 20px rgba(255,107,107,0.12);
+}
+.info-btn {
+  width:44px; height:44px; border-radius:10px;
+  border:1px solid #e6f2ff; background:white; cursor:pointer;
+}
+
+/* gotcha page */
+body.gotcha {
+  text-align:center;
+  padding:40px 20px;
+}
+body.gotcha main {
+  background:white;
+  border-radius:16px;
+  padding:24px;
+  max-width:640px;
+  margin:0 auto;
+  box-shadow: var(--shadow);
+}
+body.gotcha h1 { color:var(--accent); font-size:1.6rem; }
+body.gotcha h2 { color:var(--accent-2); }
+body.gotcha button {
+  background: linear-gradient(90deg,var(--accent), var(--accent-2));
+  color:white;
+  border:none;
+  border-radius:12px;
+  padding:12px 20px;
+  font-size:1rem;
+  font-weight:700;
+  margin-top:20px;
+  cursor:pointer;
+}
+
+/* footer */
+footer { text-align:center; color:var(--muted); padding:18px 6px; font-size:0.85rem; }
+
+/* small responsive tweaks */
+@media (max-width:480px){
+  .thumb { height:150px; } /* was 110px*/
+  .logo { width:48px; height:48px; font-size:18px; }
+}
+
+
+/* ================================
+   Redirect (fake "loading" page)
+   ================================ */
+body.redirect {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: radial-gradient(circle at center, #101820 0%, #060b10 100%);
+  overflow: hidden;
+  color: white;
+  text-align: center;
+}
+
+.hacker {
+  position: relative;
+  width: 320px;             /* increased from 240px for more presence */
+  height: 320px;
+  background: url("images/hacker-still.png") center/contain no-repeat;
+  border-radius: 16px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+  opacity: 0;
+  transform: scale(0.9);
+  animation: fadeInZoom 8s ease-in-out forwards;
+  animation-delay: 2s;      /* start after loading text delay */
+}
+
+@keyframes fadeInZoom {
+  0%   { opacity: 0; transform: scale(0.9); }
+  15%  { opacity: 1; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.25); }
+}
+
+.dialogue {
+  position: absolute;
+  top: -50px;
+  right: -60px;
+  background: white;
+  color: #222;
+  font-weight: 700;
+  padding: 10px 16px;
+  border-radius: 14px;
+  border: 3px solid #ff6b6b;
+  font-family: "Comic Sans MS", "Fredoka", system-ui;
+  font-size: 1.1rem;
+  opacity: 0;
+  transform: scale(0.8);
+  animation: popin 0.6s forwards cubic-bezier(.2,.9,.4,1.4);
+  animation-delay: 5.5s;    /* show later */
+}
+
+@keyframes popin {
+  to { opacity: 1; transform: scale(1); }
+}
+
+.loading-text {
+  margin-top: 30px;
+  font-size: 1.1rem;
+  opacity: 0.9;
+  color: #cfe3ff;
+  animation: flicker 1.5s infinite;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Fade out loading text when hacker appears */
+.loading-text.fade-out {
+  animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; transform: translateY(-10px); }
+}
+

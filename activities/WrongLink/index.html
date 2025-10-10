@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>UltraStream Junior</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <div class="logo">USJ</div>
+      <div>
+        <h1>UltraStream Junior</h1>
+        <p class="tagline">Fun, safe videos — demo site</p>
+      </div>
+    </div>
+    <nav aria-label="Main">
+      <button class="account-btn" title="Profile (demo)">👤 Parent</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>Pick a movie — what will you watch today?</h2>
+      <p>Explore a safe, kid-friendly collection. This is a simulation for learning about internet safety.</p>
+    </section>
+
+    <section class="catalog" aria-label="Video catalog">
+      <!-- Space Pals -->
+      <article class="card" data-title="Space Pals" data-url="https://example.local/space-pals">
+        <div class="thumb">
+          <img src="images/space-pals.png" alt="Space Pals thumbnail" onerror="this.src='images/placeholder-space.svg'">
+          <button class="play">▶</button>
+          <span class="badge">4+</span>
+        </div>
+        <h3>Space Pals</h3>
+        <p class="meta">20 min • Animation</p>
+        <div class="actions">
+          <button class="watch-btn" data-title="Space Pals">Watch</button>
+          <button class="info-btn" aria-label="More info about Space Pals">i</button>
+        </div>
+      </article>
+
+      <!-- Forest Friends -->
+      <article class="card" data-title="Forest Friends" data-url="https://example.local/forest-friends">
+        <div class="thumb">
+          <img src="images/forest-friends.png" alt="Forest Friends thumbnail" onerror="this.src='images/placeholder-forest.svg'">
+          <button class="play">▶</button>
+          <span class="badge">3+</span>
+        </div>
+        <h3>Forest Friends</h3>
+        <p class="meta">12 min • Live Action</p>
+        <div class="actions">
+          <button class="watch-btn" data-title="Forest Friends">Watch</button>
+          <button class="info-btn" aria-label="More info about Forest Friends">i</button>
+        </div>
+      </article>
+
+      <!-- Ocean Quest -->
+      <article class="card" data-title="Ocean Quest" data-url="https://example.local/ocean-quest">
+        <div class="thumb">
+          <img src="images/ocean-quest.png" alt="Ocean Quest thumbnail" onerror="this.src='images/placeholder-ocean.svg'">
+          <button class="play">▶</button>
+          <span class="badge">5+</span>
+        </div>
+        <h3>Ocean Quest</h3>
+        <p class="meta">18 min • Adventure</p>
+        <div class="actions">
+          <button class="watch-btn" data-title="Ocean Quest">Watch</button>
+          <button class="info-btn" aria-label="More info about Ocean Quest">i</button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <small>Demo site for teaching internet safety — not a real streaming service</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

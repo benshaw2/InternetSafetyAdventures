@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Simulation: Gotcha!</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="gotcha">
+  <main>
+    <h1>Gotcha — this was a simulation</h1>
+    <p>You clicked a link that did not take you to the movie. That can happen on real sites too — sometimes by mistake, or because someone is trying to trick you.</p>
+
+    <h2>What happened?</h2>
+    <ul>
+      <li>The "Watch" button was programmed to redirect to this page so we could show how it feels when a link doesn't do what you expect.</li>
+      <li>Notice whether the link asked for anything (it didn’t) — never enter passwords or personal info on pages you weren’t expecting.</li>
+    </ul>
+
+    <h2>Tips to stay safe</h2>
+    <ol>
+      <li>Always check the website name — are you on the site you expect?</li>
+      <li>If a page looks strange or asks for extra info, ask a grown-up before continuing.</li>
+      <li>Hover over links (or long-press on mobile) to see where they go — if unsure, don’t click.</li>
+      <li>Use parental controls and talk openly about what sites are allowed.</li>
+    </ol>
+
+    <button onclick="location.href='index.html'">Try again</button>
+  </main>
+
+  <script>
+    // show clicked title if available
+    const params = new URLSearchParams(location.search);
+    const title = params.get('title');
+    if (title) {
+      const h1 = document.querySelector('main h1');
+      if (h1) h1.textContent = `Gotcha — ${decodeURIComponent(title)}`;
+    }
+  </script>
+</body>
+</html>
+

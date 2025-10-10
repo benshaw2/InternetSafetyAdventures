@@ -24,6 +24,7 @@ Future Ideas:
 ## Project Structure
 -------------------------------------------------------------------
 
+```bash
 InternetSafetyAdventures/
 │
 ├── README.md
@@ -33,7 +34,7 @@ InternetSafetyAdventures/
 └── docs/
     └── activities/
         └── (each activity has its own documentation .md file)
-
+```
 -------------------------------------------------------------------
 ## Running Locally
 -------------------------------------------------------------------
@@ -97,12 +98,14 @@ See LICENSE.txt for full terms.
 
 Contributions are welcome! New activities should be entirely self-contained and adhere to this structure (or similar):
 
+```bash
 activities/
 └── ActivityName/
     ├── index.html
     ├── script.js
     ├── style.css
     └── images/
+```
 
 Contributor Requirements:
 1. Contain only safe, age-appropriate material.
@@ -131,9 +134,9 @@ When submitting a contribution, please include a section formatted like this in 
 
 Contributors:
 - Jane Doe — Lead Designer 
-  GitHub: https://github.com/janedoe
+  GitHub: <your url>
 - John Smith — JavaScript Developer 
-  GitHub: https://github.com/johnsmithdev
+  GitHub: <your url>
 
 Guidelines:
 - Use your real name, display name, or team name — whichever you prefer.

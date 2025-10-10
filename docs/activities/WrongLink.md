@@ -15,6 +15,8 @@ It uses a mock “kids’ streaming site” to create a safe, hands-on learning 
 -------------------------------------------------------------------
 ## STRUCTURE
 -------------------------------------------------------------------
+
+```bash
 activities/WrongLink/
 ├── index.html      → main mock streaming interface
 ├── redirect.html   → transitional “loading” animation page
@@ -22,6 +24,7 @@ activities/WrongLink/
 ├── script.js       → handles button interactions and redirects
 ├── style.css       → shared styling
 └── images/         → thumbnails and hacker illustration
+```
 
 -------------------------------------------------------------------
 ## HOW IT WORKS

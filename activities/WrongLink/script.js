@@ -49,7 +49,26 @@ document.addEventListener('DOMContentLoaded', () => {
       location.href = next;
     }, totalDelay);
   }
+  
 
+});
 
+document.addEventListener("DOMContentLoaded", () => {
+  const wrapper = document.querySelector(".catalog-wrapper");
+  if (!wrapper) return;
+
+  const catalog = wrapper.querySelector(".catalog");
+  const leftBtn = wrapper.querySelector(".scroll-btn.left");
+  const rightBtn = wrapper.querySelector(".scroll-btn.right");
+
+  const scrollAmount = 300; // pixels per click
+
+  leftBtn.addEventListener("click", () => {
+    catalog.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+  });
+
+  rightBtn.addEventListener("click", () => {
+    catalog.scrollBy({ left: scrollAmount, behavior: "smooth" });
+  });
 });
 

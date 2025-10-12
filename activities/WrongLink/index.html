@@ -142,7 +142,9 @@
 
     </section>
 
-    <section class="catalog" aria-label="Video catalog">
+    <section class="catalog-wrapper">
+    <button class="scroll-btn left" aria-label="Scroll left">◀</button>
+    <div class="catalog" aria-label="Video catalog">
       <!-- Space Pals -->
       <article class="card" data-title="Space Pals" data-url="https://example.local/space-pals">
         <div class="thumb">
@@ -187,6 +189,21 @@
           <button class="info-btn" aria-label="More info about Ocean Quest">i</button>
         </div>
       </article>
+      
+      <!-- Tiny Train Tales -->
+      <article class="card" data-title="Tiny Train Tales" data-url="https://example.local/tiny-train-tales">
+        <div class="thumb">
+          <img src="images/tiny-train-tales.png" alt="Tiny Train Tales thumbnail" onerror="this.src='images/placeholder-train.svg'">
+          <button class="play">▶</button>
+          <span class="badge">3+</span>
+        </div>
+        <h3>Tiny Train Tales</h3>
+        <p class="meta">11 min • Animation</p>
+        <div class="actions">
+          <button class="watch-btn" data-title="Tiny Train Tales">Watch</button>
+          <button class="info-btn" aria-label="More info about Tiny Train Tales">i</button>
+        </div>
+      </article>
     
       <!-- Additional titles (commented out for later use) -->
       <!--
@@ -215,20 +232,6 @@
         <div class="actions">
           <button class="watch-btn" data-title="Robo-Rovers">Watch</button>
           <button class="info-btn" aria-label="More info about Robo-Rovers">i</button>
-        </div>
-      </article>
-
-      <article class="card" data-title="Tiny Train Tales" data-url="https://example.local/tiny-train-tales">
-        <div class="thumb">
-          <img src="images/tiny-train-tales.png" alt="Tiny Train Tales thumbnail" onerror="this.src='images/placeholder-train.svg'">
-          <button class="play">▶</button>
-          <span class="badge">3+</span>
-        </div>
-        <h3>Tiny Train Tales</h3>
-        <p class="meta">11 min • Animation</p>
-        <div class="actions">
-          <button class="watch-btn" data-title="Tiny Train Tales">Watch</button>
-          <button class="info-btn" aria-label="More info about Tiny Train Tales">i</button>
         </div>
       </article>
 
@@ -303,6 +306,8 @@
       </article>
       -->
 
+    </div>
+    <button class="scroll-btn right" aria-label="Scroll right">▶</button>
     </section>
   </main>
 

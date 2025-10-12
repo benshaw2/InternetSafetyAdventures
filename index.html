@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Internet Safety Adventures</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="theme-toggle-container">
+      <button id="theme-toggle" aria-label="Toggle light or dark mode">🌞</button>
+    </div>
+    <div class="hero-content">
+      <h1>🌐 Internet Safety Adventures</h1>
+      <p class="muted">
+        Playful, self-contained simulations that teach kids how to stay safe online.
+      </p>
+      <a href="#overview" class="button">Learn More ↓</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="overview">
+      <h2>About the Project</h2>
+      <p>
+        <strong>InternetSafetyAdventures</strong> is an open educational project that helps
+        children and families learn about internet safety through interactive web simulations.
+        Each activity mimics a familiar online scenario, revealing how to recognize safe versus unsafe digital behaviors.
+      </p>
+      <p>
+        Designed for classrooms, parents, and independent learners, these activities are fully
+        self-contained — no installation, servers, or data collection required. Everything runs directly in the browser.
+      </p>
+    </section>
+
+    <section id="educational-intent">
+      <h2>Educational Intent</h2>
+      <p>
+        The project was created to make digital safety education engaging and experiential.
+        Each simulation provides a safe space for children to make small, guided mistakes
+        and then reflect on what happened. This promotes lasting understanding rather than rote memorization.
+      </p>
+      <ul>
+        <li>Encourage critical thinking online.</li>
+        <li>Teach awareness of deceptive design and phishing tactics.</li>
+        <li>Promote discussion between teachers, parents, and students.</li>
+      </ul>
+      <blockquote>
+        “Tell me and I forget, teach me and I may remember, involve me and I learn.”  
+        — Benjamin Franklin (Attributed)
+      </blockquote>
+    </section>
+
+    <section id="activities">
+      <h2>Interactive Activities</h2>
+      <div class="activity-grid">
+        <div class="activity-card fade-section">
+          <img src="activities/WrongLink/thumbnail.jpg" alt="WrongLink Activity Thumbnail" onerror="this.style.display='none'" />
+          <div class="activity-info">
+            <h3>WrongLink</h3>
+            <p>
+              A simulation of a fake streaming site. Children click what appears to be a
+              normal “Watch” button, but are redirected to a teaching page explaining how
+              misleading links can appear trustworthy and how to check URLs safely.
+            </p>
+            <a class="button" href="activities/WrongLink/index.html">Launch Activity →</a>
+          </div>
+        </div>
+      </div>
+      <p class="coming-soon">More activities coming soon!</p>
+    </section>
+
+    <section id="contribute">
+      <h2>Contributing</h2>
+      <p>
+        <strong>InternetSafetyAdventures</strong> is open source and welcomes educators,
+        developers, and designers to contribute. New activities should be self-contained,
+        age-appropriate, and built with accessibility and privacy in mind.
+      </p>
+      <p>
+        See the
+        <a href="https://github.com/benshaw2/InternetSafetyAdventures#contributing" target="_blank">Contributing Guide</a>
+        for structure, safety checklist, and documentation examples.
+      </p>
+      <a href="https://github.com/benshaw2/InternetSafetyAdventures" target="_blank" class="button">View on GitHub</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      Created by <a href="https://github.com/benshaw2" target="_blank">Ben Shaw</a> and contributors.  
+      Licensed under <a href="LICENSE.txt">CC BY-NC-SA 4.0</a>.
+    </p>
+  </footer>
+</body>
+</html>
+

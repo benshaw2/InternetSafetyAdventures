@@ -1,0 +1,99 @@
+/* === Trick-or-Treat: Address Page Styling (Unified Theme) === */
+
+body {
+  font-family: "Trebuchet MS", "Verdana", "Helvetica", sans-serif;
+  background: linear-gradient(to bottom, #2c1a4b, #43296a);
+  color: #2c1a4b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+/* Light card container */
+.address-card {
+  background: #fff7eb;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  padding: 2rem 2.5rem;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Headings */
+.address-card .title {
+  color: #ff9b33;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.address-card .intro {
+  color: #3b1e58;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+/* Form */
+#claim-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: left;
+}
+
+#claim-form label {
+  color: #2c1a4b;
+  font-weight: bold;
+}
+
+#claim-form input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid #ff9b33;
+  font-size: 1rem;
+}
+
+/* Button */
+.claim-btn {
+  background: #ff9b33;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0.8rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  margin-top: 0.8rem;
+}
+
+.claim-btn:hover {
+  background: #ffb347;
+  transform: translateY(-2px);
+}
+
+/* Note */
+.note {
+  font-size: 0.9rem;
+  color: #5c4d74;
+  margin-top: 1rem;
+}
+
+/* Fade animation */
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.packing-text {
+  color: #fff4d4;
+  font-size: 1.3rem;
+  text-align: center;
+}
+

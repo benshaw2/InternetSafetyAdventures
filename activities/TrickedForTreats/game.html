@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Online Trick-or-Treat – Game</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="game.css" />
+</head>
+<body class="fade-in">
+
+  <div class="container">
+    <header>
+      <h1>🍬 Trick-or-Treat Challenge</h1>
+      <div id="stats">
+        <span id="avatarDisplay"></span>
+        <span id="candyCount">🍭 Candy: 0</span>
+        <button id="quitButton">Quit</button>
+      </div>
+    </header>
+
+    <main id="gameArea">
+      <section id="houseScene">
+        <div id="questionSection">
+          <h2 id="houseTitle">🏠 House #1</h2>
+          <p id="questionText">Would you rather have a dog or a cat?</p>
+          <input id="answerInput" type="text" placeholder="Type your answer..." />
+          <div class="buttons">
+            <button id="submitButton">Submit Answer</button>
+            <button id="nextButton" style="display:none;">Next House →</button>
+          </div>
+        </div>
+
+        <div id="leaderboard">
+          <h3>Top Trick-or-Treaters</h3>
+          <ul id="leaderboardList">
+            <!-- Populated dynamically by JS -->
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
+

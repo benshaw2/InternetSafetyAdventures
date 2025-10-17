@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Online Trick-or-Treat Challenge</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="index-page">
+
+  <div class="container fade-in">
+    <header>
+      <h1>🎃 Online Trick-or-Treat Challenge!</h1>
+      <p class="intro">
+        Choose your Halloween costume, then go door-to-door online to collect candy!  
+      </p>
+    </header>
+
+    <section class="avatar-select">
+      <h2>Pick Your Costume</h2>
+      <div class="avatars">
+        <button class="avatar" data-avatar="🎃 Pumpkin">🎃 Pumpkin</button>
+        <button class="avatar" data-avatar="🧙‍♀️ Witch">🧙‍♀️ Witch</button>
+        <button class="avatar" data-avatar="🧟 Zombie">🧟 Zombie</button>
+        <button class="avatar" data-avatar="🤖 Robot">🤖 Robot</button>
+        <button class="avatar" data-avatar="🦸 Superhero">🦸 Superhero</button>
+        <button class="avatar" data-avatar="🐱 Cat">🐱 Cat</button>
+        <button class="avatar" data-avatar="🏴‍☠️ Pirate">🏴‍☠️ Pirate</button>
+        <button class="avatar" data-avatar="👑 Princess">👑 Princess</button>
+      </div>
+    </section>
+
+    <section class="start-section">
+      <button id="startButton" class="primary-btn" disabled>Start Trick-or-Treating 🍬</button>
+    </section>
+  </div>
+
+  <footer>
+    <p class="credits">Part of <strong>InternetSafetyAdventures</strong> — teaching safe surfing through play.</p>
+  </footer>
+
+  <script>
+    const avatars = document.querySelectorAll('.avatar');
+    const startButton = document.getElementById('startButton');
+    let selectedAvatar = null;
+
+    avatars.forEach(btn => {
+      btn.addEventListener('click', () => {
+        avatars.forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        selectedAvatar = btn.dataset.avatar;
+        startButton.disabled = false;
+      });
+    });
+
+    startButton.addEventListener('click', () => {
+      if (selectedAvatar) {
+        document.body.classList.add('fade-out');
+        setTimeout(() => {
+          window.location.href = `game.html?avatar=${encodeURIComponent(selectedAvatar)}`;
+        }, 500);
+      }
+    });
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,179 @@
+/* === Trick-or-Treat Game Styling (Responsive + Modern) === */
+
+body {
+  font-family: "Trebuchet MS", "Verdana", "Helvetica", sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-light);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  line-height: 1.6;
+}
+
+/* Container and Header */
+.container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  background: rgba(255, 247, 235, 0.08);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  padding: 1.5rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+h1 {
+  color: var(--accent);
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+#stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 1.1rem;
+}
+
+#avatarDisplay {
+  color: var(--accent-hover);
+  font-weight: bold;
+}
+
+/* Game Area Layout */
+#houseScene {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+#questionSection,
+#leaderboard {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  color: var(--text-dark);
+  padding: 1.5rem;
+  flex: 1 1 400px;
+  min-width: 400px;
+  max-width: 400px; /* 👈 keeps consistent width */
+}
+
+/* Question Section */
+#questionSection h2 {
+  color: var(--accent);
+  font-size: 1.5rem;
+}
+
+#questionText {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  min-height: 3.5em; /* 👈 reserves space so size doesn’t jump */
+}
+
+#answerInput {
+  width: 100%;
+  padding: 0.6rem;
+  font-size: 1.05rem;
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Leaderboard */
+#leaderboard h3 {
+  color: var(--accent-hover);
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+#leaderboardList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#leaderboardList li {
+  background: white;
+  color: var(--text-dark);
+  border-radius: var(--radius);
+  margin-bottom: 0.4rem;
+  padding: 0.5rem 0.8rem;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+#leaderboardList li.you {
+  background: #ffe680;
+  font-weight: bold;
+  transform: scale(1.03);
+}
+
+/* Buttons */
+button,
+#quitButton {
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.6rem 1.2rem;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: background var(--transition-speed), transform var(--transition-speed);
+}
+
+button:hover,
+#quitButton:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 750px) {
+  #houseScene {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #questionSection,
+  #leaderboard {
+    flex: 1 1 100%;
+    min-width: 90%;
+    max-width: 90%;
+  }
+}
+
+/* Fade animation reused from index */
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+

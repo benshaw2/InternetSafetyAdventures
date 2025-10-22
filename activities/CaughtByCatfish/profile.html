@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Your Profile - FriendNet</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/index.css" />
+</head>
+<body>
+  <div class="profile-container">
+    <h1>Create Your Profile</h1>
+    <form id="profileForm">
+      <label>Username</label>
+      <input type="text" id="username" required />
+
+      <label>Email</label>
+      <input type="email" id="email" required placeholder="you@example.com" />
+
+      <label>Password</label>
+      <input type="password" id="password" required placeholder="At least 8 characters, upper/lowercase, number" />
+
+      <label>Birthday</label>
+      <input type="date" id="birthday" />
+
+      <label>City</label>
+      <input type="text" id="location" placeholder="e.g. Denver" />
+
+      <label>State</label>
+      <input type="text" id="location-state" placeholder="e.g. Colorado" />
+
+      <label>Gender</label>
+      <select id="gender">
+        <option value="">Prefer not to say</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="non-binary">Non-binary</option>
+      </select>
+
+      <label>Name</label>
+      <input type="text" id="childName" placeholder="e.g. Lily" />
+
+      <label>About Me</label>
+      <textarea id="about" placeholder="Tell your friends about yourself..."></textarea>
+
+      <label>Interests</label>
+      <div class="checkboxes">
+        <label><input type="checkbox" value="music" /> Music</label>
+        <label><input type="checkbox" value="sports" /> Sports</label>
+        <label><input type="checkbox" value="gaming" /> Gaming</label>
+        <label><input type="checkbox" value="reading" /> Reading</label>
+      </div>
+
+      <label>Profile Picture</label>
+      <div class="photo-options">
+        <div class="upload-section">
+          <input type="file" id="photoUpload" accept="image/*" />
+          <p class="hint">(optional) Upload your photo</p>
+        </div>
+
+        <!-- <div class="avatar-section">
+          <p>or choose an avatar:</p>
+          <div class="avatar-options">
+            <img src="assets/img/avatars/avatar1.svg" class="avatar" alt="Avatar 1" />
+            <img src="assets/img/avatars/avatar2.svg" class="avatar" alt="Avatar 2" />
+          </div>
+        </div> -->
+      </div>
+
+      <label>Who can see your picture?</label>
+      <select id="visibility">
+        <option value="everyone" selected>Everyone</option>
+        <option value="friends">Friends only</option>
+      </select>
+
+      <p id="errorMsg" class="error-msg"></p>
+      <button type="submit" class="btn primary">Create My Profile</button>
+    </form>
+  </div>
+
+  <script src="assets/js/profile.js"></script>
+</body>
+</html>
+

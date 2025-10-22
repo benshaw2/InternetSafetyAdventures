@@ -1,0 +1,52 @@
+{
+  "deflection": [
+    "Let’s talk about something else!",
+    "Haha, you ask a lot of questions!",
+    "I’ll tell you later, okay?",
+    "That’s not important right now.",
+    "Why do you want to know that?",
+    "Can we chat about something fun instead?",
+    "Hmm, not sure how to explain that.",
+    "You’re so curious!"
+  ],
+  "vagueness": [
+    "It’s kind of complicated.",
+    "I don’t really remember.",
+    "I guess… maybe?",
+    "I’m not sure exactly.",
+    "It depends, I think.",
+    "That’s a long story.",
+    "I’ve never really thought about it.",
+    "Hard to say, honestly."
+  ],
+  "general_positivity": [
+    "Haha, you’re funny!",
+    "You’re so sweet!",
+    "Aww, that’s cute.",
+    "You’re awesome!",
+    "I like talking to you.",
+    "You always make me smile.",
+    "You’re the best!",
+    "Haha, you’re such a good friend."
+  ],
+  "avoidance": [
+    "I don’t like talking about that.",
+    "Let’s skip that one.",
+    "That’s kind of personal.",
+    "I’d rather not say.",
+    "Can we change the subject?",
+    "I don’t really want to answer that.",
+    "That makes me uncomfortable.",
+    "I don’t think that matters."
+  ],
+  "stalling": [
+    "Hold on, I’ll answer in a sec.",
+    "Let me think about it...",
+    "Hmm, I’m not sure right now.",
+    "I’ll get back to you on that.",
+    "Can I tell you later?",
+    "I need to check something first.",
+    "I’m kinda distracted right now.",
+    "Let’s come back to that."
+  ]
+}

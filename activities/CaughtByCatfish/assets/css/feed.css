@@ -1,0 +1,816 @@
+/* ========== Base ========= */
+* {
+  box-sizing: border-box;
+  font-family: "Nunito", "Inter", sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f5f7fb;
+  color: #333;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* ========== Layout ========= */
+.feed-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background: #fff;
+  border-right: 1px solid #ddd;
+  padding: 1em;
+}
+
+.feed {
+  flex: 1;
+  padding: 1em 2em;
+  position: relative;
+}
+
+/* ========== User Card ========= */
+.user-card {
+  text-align: center;
+}
+
+.user-card .user-pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 0.5em;
+}
+
+.user-card h3 {
+  margin: 0.3em 0;
+}
+
+.user-card p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* ========== New Post Button ========= */
+#newPostBtn {
+  margin-bottom: 1em;
+  min-width: 140px;
+}
+
+/* ========== Post Modal ========= */
+#newPostModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  width: 90%;
+  max-width: 500px;
+  padding: 1.5em;
+}
+
+#newPostModal.hidden {
+  display: none;
+}
+
+#newPostModal h3 {
+  margin-top: 0;
+}
+
+#newPostModal textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 0.5em;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  resize: vertical;
+}
+
+#newPostModal input[type="file"] {
+  margin-top: 0.5em;
+}
+
+#newPostModal .modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5em;
+  margin-top: 1em;
+}
+
+/* ========== Post Styling ========= */
+.post {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1em;
+  margin-bottom: 1em;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.post h4 {
+  margin: 0 0 0.5em 0;
+  color: #1877f2;
+}
+
+.post p {
+  margin: 0;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.post img.post-image {
+  max-width: 100%;
+  margin-top: 0.8em;
+  border-radius: 8px;
+}
+
+/* ========== Chat Popup ========= */
+#chatContainer {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 320px;
+  height: 420px;
+  max-height: 420px;
+  max-width: 90%;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1003;
+  display: none;
+}
+
+#chatContainer.active {
+  display: flex;
+}
+
+.chat-header {
+  background: #1877f2;
+  color: #fff;
+  padding: 0.7em 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 0.7em 1em;
+  overflow-y: auto;
+  max-height: 250px;
+  background: #f9f9f9;
+}
+
+#chatInput {
+  border-top: 1px solid #ddd;
+  padding: 0.5em;
+}
+
+.chat-message {
+  margin-bottom: 0.5em;
+  padding: 0.4em 0.6em;
+  border-radius: 8px;
+  max-width: 85%;
+  word-wrap: break-word;
+}
+
+.user-message {
+  background: #1877f2;
+  color: #fff;
+  align-self: flex-end;
+}
+
+.catfisher-message {
+  background: #e0e0e0;
+  color: #333;
+  align-self: flex-start;
+}
+
+.system-message {
+  background: #ffd;
+  color: #333;
+  align-self: center;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.chat-input {
+  display: flex;
+  border-top: 1px solid #ddd;
+}
+
+.chat-input input {
+  flex: 1;
+  border: none;
+  padding: 0.6em 0.8em;
+  font-size: 0.95rem;
+}
+
+.chat-input button {
+  background: #1877f2;
+  border: none;
+  color: #fff;
+  padding: 0 1em;
+  font-weight: 600;
+}
+
+.chat-input {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #ddd;
+  padding: 0.5em;
+  background: #f9f9f9;
+}
+
+#chatInput {
+  flex: 1;
+  resize: none;           /* prevent manual drag resizing */
+  min-height: 40px;       /* comfortable default */
+  max-height: 80px;       /* optional limit */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+#chatSend {
+  margin-left: 0.5em;
+  padding: 8px 12px;
+  background: #1877f2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#chatSend:hover {
+  background: #145dbf;
+}
+
+
+/* ========== DM Alert ========= */
+#dmAlert {
+  position: fixed;
+  bottom: 20px;
+  /*right: 360px;*/
+  right: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  padding: 0.8em 1em;
+  display: none;
+  z-index: 1002;
+}
+
+#dmAlert.visible {
+  display: block;
+}
+
+#dmAlert button {
+  margin-left: 0.5em;
+  font-weight: 600;
+}
+
+/* ========== Overlay for Modal Background ========= */
+#modalOverlay {
+  position: fixed;
+  top:0; left:0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  z-index: 999;
+  display: none;
+}
+
+/* ========== Responsive ========= */
+@media(max-width: 600px) {
+  .feed-layout {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
+  #chatContainer {
+    width: 90%;
+    bottom: 10px;
+    right: 5%;
+  }
+  #dmAlert {
+    right: 5%;
+    bottom: 70px;
+  }
+}
+
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4); /* semi-transparent */
+  z-index: 900;
+}
+
+.modal-backdrop.hidden {
+  display: none;
+}
+
+/* Ensure the modal is above the backdrop */
+#newPostModal {
+  z-index: 1000;
+}
+
+
+/* ======================================= */
+/* GOTCHA / GOOD JOB OVERLAY ANIMATIONS */
+/* ======================================= */
+
+/*.ending-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+
+.ending-overlay.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.ending-card {
+  background: #222;
+  padding: 2em 2.5em;
+  border-radius: 1rem;
+  text-align: center;
+  max-width: 480px;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+  transform: scale(0.8);
+  opacity: 0;
+  animation: popIn 0.6s ease forwards;
+}
+
+.ending-card h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5em;
+}
+
+.ending-card p {
+  line-height: 1.4;
+  font-size: 1.1rem;
+  margin-bottom: 1em;
+}
+
+.ending-card.goodjob {
+  background: #1d3e1d;
+  border: 2px solid #4ae44a;
+}
+
+.ending-card.gotcha {
+  background: #3e1d1d;
+  border: 2px solid #ff5555;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}*/
+
+/* ======================================= */
+/* 💥 Chat Ending Overlays (Gotcha / Good Job) */
+/* ======================================= */
+
+.ending-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+
+.ending-overlay.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.ending-card {
+  background: #111;
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  max-width: 600px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  animation: popIn 0.7s ease forwards;
+}
+
+.ending-card.gotcha {
+  border: 3px solid #ff4444;
+}
+
+.ending-card.goodjob {
+  border: 3px solid #4caf50;
+}
+
+.ending-card h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.ending-card p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.ending-card button {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  background: white;
+  color: #111;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.ending-card button:hover {
+  background: #ddd;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* ---- Post & Comment Animations ---- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.post, .comment {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+
+.comment-btn {
+  margin-top: 8px;
+  padding: 4px 8px;
+  font-size: 0.9em;
+  border: none;
+  background: var(--accent-color, #007bff);
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.comments-container {
+  margin-top: 6px;
+  border-left: 2px solid #ccc;
+  padding-left: 8px;
+}
+
+.comment {
+  font-size: 0.9em;
+  margin: 4px 0;
+  opacity: 0.9;
+}
+
+.interaction-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+
+.heart-btn.popped {
+  transform: scale(1.3);
+  transition: transform 0.2s ease;
+}
+
+.comments p {
+  margin: 0.25rem 0;
+  font-size: 0.95em;
+}
+
+.heart-count {
+  font-weight: bold;
+  margin-left: 0.25rem;
+}
+
+
+.post-image {
+  max-width: 100%;    /* won’t overflow the post container */
+  max-height: 300px;  /* reasonable vertical size */
+  width: auto;
+  height: auto;
+  display: block;
+  margin-top: 8px;    /* space from text */
+  border-radius: 8px; /* optional: rounded corners */
+  object-fit: cover;  /* crops excess to maintain box shape if needed */
+}
+
+.post-image {
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+/* feed.css */
+
+/* container that crops image and holds overlay */
+.post-image-container {
+  position: relative;
+  width: 250px;          /* fixed display size */
+  height: 300px;
+  overflow: hidden;      /* crop the image */
+  border-radius: 8px;    /* optional: rounded corners */
+}
+
+/* the actual image inside the container */
+.post-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* fills container while keeping aspect ratio */
+  display: block;
+}
+
+/* overlay to block dragging & right-click */
+.post-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: all;   /* intercepts mouse events */
+  background: transparent;
+}
+
+/* ---- Overlay ---- */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.overlay.hidden {
+  display: none;
+}
+
+.overlay-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+.overlay-content h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.overlay-content label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+.overlay-content input[type="text"],
+.overlay-content input[type="email"],
+.overlay-content input[type="password"],
+.overlay-content input[type="date"],
+.overlay-content select,
+.overlay-content textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.3rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.overlay-content textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+.photo-options {
+  margin-top: 1rem;
+}
+
+.photo-preview {
+  display: block;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-top: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.form-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-actions button {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.form-actions button:hover {
+  opacity: 0.9;
+}
+
+
+
+/* ---- Topbar ---- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 1em;
+  background: #1877f2;
+  color: #fff;
+  font-size: 1.7em;
+  font-weight: bold;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  overflow: hidden;
+}
+
+/*.logo-small {
+  margin: 0;
+  background: linear-gradient(90deg, #ff5f6d, #ffc371);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 3s infinite linear;
+}*/
+
+.logo-small {
+  margin: 0;
+  background: none;            /* remove gradient */
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+  color: #fff;                 /* plain white text */
+  animation: none;
+}
+
+.signout-link {
+  position: absolute;   /* allows placing it top-right */
+  right: 1em;
+  top: 50%;
+  transform: translateY(-50%); /* vertically center relative to topbar */
+  color: #fff;
+  font-size: 0.6em;    /* smaller than logo, tweak as needed */
+  font-weight: normal;  /* optional, so it doesn’t compete with logo */
+  text-decoration: none;
+}
+
+.signout-link:hover {
+  text-decoration: underline; /* subtle hover effect */
+}
+
+
+@keyframes gradientMove {
+  0% { background-position: 0% }
+  100% { background-position: 200% }
+}
+
+
+/* ---- Sidebar ---- */
+.sidebar {
+  background: #f7f8fa;
+  padding: 1em;
+  border-right: 1px solid #ddd;
+  border-radius: 0 10px 10px 0;
+}
+
+#userPic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #1877f2;
+  margin-bottom: 0.5em;
+}
+
+.user-card {
+  text-align: center;
+  padding: 1em;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  margin-bottom: 1em;
+}
+
+.user-card img.user-pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #1877f2;
+  margin-bottom: 0.5em;
+}
+
+.user-card h3 {
+  margin: 0.3em 0;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.user-card p {
+  font-size: 0.9em;
+  color: #555;
+  margin-bottom: 0.5em;
+}
+
+.btn {
+  padding: 0.5em 1em;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn.primary {
+  background: #1877f2;
+  color: #fff;
+  transition: background 0.2s;
+}
+
+.btn.primary:hover {
+  background: #145dbf;
+}
+
+.btn.secondary {
+  background: #e4e6eb;
+  color: #050505;
+}
+
+.feed-layout {
+  display: flex;
+  gap: 1em;
+}
+
+.feed {
+  flex: 1;
+  padding: 1em;
+}
+
+
+/* repondable posts */
+
+.post h4 {
+  cursor: pointer;
+  color: #1877f2;
+  margin-bottom: 0.3em;
+}
+
+.post h4:hover {
+  text-decoration: underline;
+}
+
+
+

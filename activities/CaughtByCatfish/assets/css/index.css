@@ -1,0 +1,247 @@
+/* ========== Base ========== */
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+  background-color: #f5f7fb;
+  color: #333;
+}
+
+/* ========== Hidden Utility ========== */
+.hidden {
+  display: none !important;
+}
+
+/* ========== Profile / Form Containers ========== */
+.profile-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 25px 30px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.profile-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #1877f2;
+}
+
+/* ========== Form Elements ========== */
+form label {
+  display: block;
+  margin: 12px 0 6px;
+  font-weight: 600;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="email"],
+form textarea,
+form select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* ========== Checkbox Groups ========== */
+.checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.checkboxes label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: normal;
+}
+
+/* ========== Profile Picture Section ========== */
+.photo-options {
+  margin-top: 8px;
+}
+
+.upload-section {
+  margin-bottom: 12px;
+}
+
+.upload-section input[type="file"] {
+  width: 100%;
+}
+
+.upload-section .hint {
+  font-size: 0.85rem;
+  color: #555;
+  margin-top: 4px;
+}
+
+.avatar-section p {
+  margin: 8px 0;
+  font-weight: 600;
+}
+
+.avatar-options {
+  display: flex;
+  gap: 10px;
+}
+
+.avatar-options img.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: border 0.2s;
+}
+
+.avatar-options img.avatar.selected {
+  border-color: #1877f2;
+}
+
+/* ========== Visibility Select ========== */
+form select {
+  margin-top: 4px;
+}
+
+/* ========== Buttons ========== */
+.btn {
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+.btn.primary {
+  background-color: #1877f2;
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background-color: #145dc8;
+}
+
+.btn.secondary {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+/* ========== Landing Page ========== */
+.landing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.landing-container {
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Landing page branding */
+.logo {
+  font-size: 2.8rem;
+  color: #1877f2;
+  margin-bottom: 0.2em;
+}
+
+.tagline {
+  color: #555;
+  margin-bottom: 1.2em;
+}
+
+/* Landing buttons */
+.landing button {
+  margin: 8px;
+  min-width: 140px;
+}
+
+/* ========== Login & Account Recovery Forms ========== */
+#login-form,
+#account-recovery {
+  text-align: left;
+  margin-top: 20px;
+}
+
+#login-form label,
+#account-recovery label {
+  font-weight: 600;
+  display: block;
+  margin-top: 12px;
+}
+
+#login-form input,
+#account-recovery input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-top: 4px;
+}
+
+#login-form a,
+#account-recovery a {
+  color: #1877f2;
+  text-decoration: none;
+}
+
+#login-form a:hover,
+#account-recovery a:hover {
+  text-decoration: underline;
+}
+
+/* ========== Form validation hints ========== */
+.validation-error {
+  font-size: 0.85rem;
+  color: #dc3545;
+  margin-top: 4px;
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 600px) {
+  .profile-container {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .avatar-options img.avatar {
+    width: 50px;
+    height: 50px;
+  }
+
+  .landing-container {
+    padding: 15px;
+  }
+
+  .landing button {
+    width: 100%;
+    margin: 6px 0;
+  }
+}
+

@@ -1,0 +1,263 @@
+/* ---------- Overlay Container ---------- */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.overlay-content {
+  background: #fff;
+  padding: 2em;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* ---------- Form Elements ---------- */
+label {
+  display: block;
+  margin-top: 1em;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+input[type=text],
+input[type=email],
+textarea,
+select {
+  width: 100%;
+  padding: 0.6em;
+  margin-top: 0.3em;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* ---------- Checkboxes ---------- */
+.checkboxes label {
+  display: inline-block;
+  margin-right: 1em;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+/* ---------- Avatar & Photo Options ---------- */
+.photo-options {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5em;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.upload-section,
+.avatar-section {
+  flex: 1 1 48%;
+  min-width: 180px;
+}
+
+/* Photo Preview */
+.photo-preview {
+  display: block;
+  margin-top: 0.5em;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+}
+
+.photo-preview.hidden {
+  display: none;
+}
+
+/* Avatar Options */
+.avatar-options {
+  display: flex;
+  gap: 0.5em;
+  flex-wrap: wrap;
+  margin-top: 0.3em;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: border 0.2s, transform 0.2s;
+}
+
+.avatar.selected {
+  border-color: #1877f2;
+  transform: scale(1.1);
+}
+
+/* ---------- Buttons ---------- */
+.overlay-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1em;
+  margin-top: 1.5em;
+}
+
+.btn {
+  padding: 0.6em 1.2em;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+
+.btn.primary {
+  background-color: #1877f2;
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background-color: #155bb5;
+}
+
+.btn.secondary {
+  background-color: #e4e6eb;
+  color: #050505;
+}
+
+.btn.secondary:hover {
+  background-color: #d8dadf;
+}
+
+/* ---------- Error Message ---------- */
+.error-msg {
+  color: red;
+  font-size: 0.85rem;
+  margin-top: 0.5em;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 480px) {
+  .photo-options {
+    flex-direction: column;
+    gap: 1em;
+  }
+
+  .upload-section,
+  .avatar-section {
+    width: 100%;
+  }
+
+  .avatar-options {
+    justify-content: flex-start;
+  }
+}
+
+
+/* ---- Profile Page Container ---- */
+.profile-container {
+  max-width: 500px;
+  margin: 2em auto;
+  background: #fff;
+  padding: 2em;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  font-family: Arial, sans-serif;
+}
+
+/* ---- Form Labels and Inputs ---- */
+label {
+  display: block;
+  margin-top: 1em;
+  font-weight: bold;
+}
+
+input[type=text],
+input[type=email],
+input[type=password],
+textarea,
+select {
+  width: 100%;
+  padding: 0.6em;
+  margin-top: 0.3em;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* ---- Interests Checkboxes ---- */
+.checkboxes label {
+  display: inline-block;
+  margin-right: 1em;
+  font-weight: normal;
+}
+
+/* ---- Photo + Avatar Selection ---- */
+.photo-options {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5em;
+}
+
+.upload-section {
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.upload-section input[type="file"] {
+  width: 100%;
+}
+
+.upload-preview {
+  margin-top: 0.5em;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ccc;
+}
+
+/* ---- Avatar Selection ---- */
+.avatar-section {
+  width: 48%;
+}
+
+.avatar-options {
+  display: flex;
+  gap: 0.5em;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: border 0.2s;
+}
+
+.avatar.selected {
+  border-color: #1877f2;
+}
+

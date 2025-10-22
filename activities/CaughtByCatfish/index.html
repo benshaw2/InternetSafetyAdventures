@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome - FriendNet</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/index.css" />
+</head>
+<body>
+  <div class="landing">
+    <div class="landing-container">
+
+      <h1 class="logo">FriendNet</h1>
+      <p class="tagline">Connect with friends safely!</p>
+
+      <!-- Landing Buttons -->
+      <div id="landing-buttons">
+        <button id="createBtn" class="btn primary">Create Profile</button>
+        <button id="loginBtn" class="btn secondary">Log In</button>
+      </div>
+
+      <!-- Login Form -->
+      <div id="login-form" class="hidden">
+        <label for="loginUsername">Username</label>
+        <input type="text" id="loginUsername" />
+
+        <label for="loginPassword">Password</label>
+        <input type="password" id="loginPassword" />
+
+        <button id="loginSubmit" class="btn primary">Submit</button>
+        <p><a href="#" id="forgotLink">Forgot username/password?</a></p>
+
+        <button id="backToLanding" class="btn secondary">Back</button>
+      </div>
+
+      <!-- Account Recovery Form -->
+      <div id="account-recovery" class="hidden">
+        <label for="recoveryEmail">Enter your email</label>
+        <input type="email" id="recoveryEmail" />
+
+        <button id="recoverySubmit" class="btn primary">Submit</button>
+        <p class="hint">If your email account is matched to a profile, we will send an email with instructions for recovering your account.</p>
+
+        <button id="backToLogin" class="btn secondary">Back</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="assets/js/index.js"></script>
+</body>
+</html>
+

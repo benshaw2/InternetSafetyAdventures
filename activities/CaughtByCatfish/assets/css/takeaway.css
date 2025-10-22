@@ -1,0 +1,126 @@
+/* ========================================= */
+/* Serious, professional debrief styling     */
+/* ========================================= */
+
+body {
+  background: radial-gradient(circle at top, #1b1b1b, #0a0a0a);
+  color: #eee;
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.takeaway-container {
+  max-width: 700px;
+  width: 100%;
+  background: rgba(25, 25, 25, 0.95);
+  border: 1px solid #333;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  animation: fadeIn 0.8s ease forwards;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  color: #fff;
+  margin-bottom: 0.3rem;
+}
+
+.subtitle {
+  color: #aaa;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.stat {
+  flex: 1;
+  min-width: 180px;
+  background: #121212;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  border: 1px solid #2b2b2b;
+  transition: border 0.3s ease;
+}
+
+.stat:hover {
+  border-color: #555;
+}
+
+.stat h2 {
+  font-size: 1rem;
+  color: #bbb;
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat p {
+  font-size: 1.4rem;
+  color: #fff;
+  font-weight: bold;
+}
+
+.analysis {
+  margin-top: 2rem;
+  background: #181818;
+  border-left: 4px solid #0077ff;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+}
+
+.analysis h2 {
+  margin-top: 0;
+  color: #66aaff;
+}
+
+.analysis p {
+  font-size: 1.1rem;
+  color: #ddd;
+  line-height: 1.6;
+}
+
+footer {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+footer button {
+  background: #0077ff;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+footer button:hover {
+  background: #3399ff;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+

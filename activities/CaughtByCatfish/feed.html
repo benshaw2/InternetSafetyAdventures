@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FriendNet Feed</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/feed.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@tensorflow-models/universal-sentence-encoder"></script>
+  <script defer src="assets/js/responseUtils.js"></script>
+  <script defer src="assets/js/classifier.js"></script>
+  <script defer src="assets/js/ChatManager.js"></script>
+  <script defer src="assets/js/chat.js"></script>
+  <script defer src="assets/js/feed.js"></script>
+  <!-- <script type="module" src="assets/js/feed.js"></script> -->
+</head>
+<body>
+  <!-- Header -->
+  <header class="topbar">
+    <h1 class="logo-small">FriendNet</h1>
+    <a href="index.html" class="signout-link">Sign Out</a>
+  </header>
+
+ 
+  <main class="feed-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="user-card" id="userCard">
+        <img id="userPic" src="assets/img/avatars/avatar1.svg" alt="Profile Picture" class="user-pic" />
+        <h3 id="displayUsername">User123</h3>
+        <p id="displayAbout">Welcome to FriendNet!</p>
+        <button id="editProfileBtn" class="btn secondary full-width">Edit Profile</button>
+      </div>
+    </aside>
+
+    <!-- Feed Section -->
+    <section class="feed">
+      <!-- New Post Button -->
+      <div class="feed-actions">
+        <button id="newPostBtn" class="btn primary">+ New Post</button>
+      </div>
+
+      <!-- Posts Container -->
+      <div id="postsContainer">
+        <!-- Simulated posts will be inserted here by feed.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- New Post Modal -->
+  <div id="newPostModal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Create New Post</h2>
+      <form id="newPostForm">
+        <textarea id="postText" placeholder="What's on your mind?"></textarea>
+
+        <div class="actions">
+          <label for="postImage" class="upload-btn">📷 Upload Image</label>
+          <input type="file" id="postImage" accept="image/*" />
+          <div class="modal-buttons">
+            <button type="button" id="cancelPost" class="btn secondary">Cancel</button>
+            <button type="submit" id="submitPost" class="btn primary">Post</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- Modal Backdrop -->
+  <div id="modalBackdrop" class="modal-backdrop hidden"></div>
+
+  <!-- Chat Window -->
+  <div id="chatContainer" class="chat-window hidden">
+    <div class="chat-header">
+      <span>Direct Message: <span id="chatUsername">@SkyFriend</span></span>
+      <!-- <img id="catfisherAvatar" src="assets/img/avatars/avatar2.svg" class="chat-avatar"/> -->
+      <button id="exitChat" class="exit-btn" title="Exit chat">✖</button>
+    </div>
+    <div id="chatMessages" class="chat-messages"></div>
+    <div class="chat-input">
+      <textarea id="chatInput" placeholder="Type a message..."></textarea>
+      <!-- <textarea id="chat-input" placeholder="Type a message..."></textarea> -->
+      <button id="chatSend">Send</button>
+      <!-- <button id="send-button">Send</button> -->
+    </div>
+
+  </div>
+
+  <!-- DM Alert -->
+  <!-- <div id="dmAlert" class="hidden">
+    <span id="dmAlertText"></span>
+    <button id="openChatFromAlert">Open Chat</button>
+  </div> -->
+  <!-- DM Alert -->
+  <div id="dmAlert" class="dm-alert hidden">
+    <span id="dmAlertText"></span>
+    <button id="openChatFromAlert" class="btn primary">Open Chat</button>
+  </div>
+
+
+  <!-- Ending Overlay -->
+  <div id="endingOverlay" class="ending-overlay hidden"></div>
+  
+<!-- Profile Edit Overlay -->
+<div id="profileOverlay" class="overlay hidden">
+  <div class="overlay-content">
+    <h2>Edit Your Profile</h2>
+    <form id="profileForm">
+      <label>Username</label>
+      <input type="text" id="username" required />
+
+      <label>About Me</label>
+      <textarea id="about" placeholder="Tell your friends about yourself..."></textarea>
+
+      <label>Birthday</label>
+      <input type="date" id="birthday" />
+
+      <label>Location</label>
+      <input type="text" id="location" placeholder="e.g. Denver, CO" />
+
+      <label>Gender</label>
+      <select id="gender">
+        <option value="">Prefer not to say</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="non-binary">Non-binary</option>
+      </select>
+
+      <label>Child’s Name</label>
+      <input type="text" id="childName" placeholder="e.g. Lily" />
+
+      <label>Interests</label>
+      <div class="checkboxes">
+        <label><input type="checkbox" value="music" /> Music</label>
+        <label><input type="checkbox" value="sports" /> Sports</label>
+        <label><input type="checkbox" value="gaming" /> Gaming</label>
+        <label><input type="checkbox" value="reading" /> Reading</label>
+      </div>
+
+      <label>Profile Picture</label>
+      <div class="photo-options">
+        <p>Upload your photo:</p>
+        <input type="file" id="photoUpload" accept="image/*" />
+        <img id="photoPreview" class="photo-preview hidden" alt="Photo Preview" />
+
+        <!-- <p>Or choose an avatar:</p>
+        <div class="avatar-options">
+          <img src="assets/img/avatars/avatar1.svg" class="avatar" alt="Avatar 1" />
+          <img src="assets/img/avatars/avatar2.svg" class="avatar" alt="Avatar 2" />
+        </div> -->
+      </div>
+
+      <div class="form-actions">
+        <button type="submit">Save Profile</button>
+        <button type="button" id="cancelProfile">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+  
+</body>
+</html>
+

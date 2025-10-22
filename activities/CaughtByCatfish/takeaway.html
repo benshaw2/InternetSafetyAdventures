@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat Debrief | Internet Safety Adventures</title>
+  <link rel="stylesheet" href="assets/css/takeaway.css" />
+  <script src="assets/js/takeaway.js"></script>
+</head>
+<body>
+  <div class="takeaway-container">
+    <header>
+      <h1>💬 Chat Debrief</h1>
+      <p class="subtitle">Reflect on what happened in your conversation</p>
+    </header>
+
+    <section class="stats">
+      <div class="stat">
+        <h2>🤝 Trust Built</h2>
+        <p id="trustValue">--%</p>
+      </div>
+      <div class="stat">
+        <h2>🔍 Personal Info Shared</h2>
+        <p id="infoValue">-- items</p>
+      </div>
+      <div class="stat">
+        <h2>⏱️ Chat Duration</h2>
+        <p id="durationValue">-- turns</p>
+      </div>
+    </section>
+
+    <section class="analysis">
+      <h2>🧠 Takeaway</h2>
+      <p id="takeawayText">
+        online might not be who they say they are. Always think before sharing personal information, and end the chat if something feels off.
+      </p>
+    </section>
+
+    <section class="history-log">
+      <details>
+        <summary>📜 View Chat History</summary>
+        <div id="chatHistory" class="log-content"></div>
+      </details>
+
+      <details>
+        <summary>🎯 View Manipulative Goals</summary>
+        <div id="goalLog" class="log-content"></div>
+      </details>
+    </section>
+
+    <footer>
+      <button onclick="returnToFeed()">Return to Feed</button>
+    </footer>
+  </div>
+</body>
+</html>

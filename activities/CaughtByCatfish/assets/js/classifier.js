@@ -24,12 +24,65 @@ async function loadCentroids() {
 /**
  * Load the USE model once
  */
+/*async function loadModel() {
+  if (!model) {
+    if (!window.loadUSELite) {
+      // wait for the module wrapper to execute
+      let attempts = 0;
+      while (!window.loadUSELite && attempts < 50) {
+        await new Promise(r => setTimeout(r, 100));
+        attempts++;
+      }
+      if (!window.loadUSELite) {
+        throw new Error("❌ USE loader not available — check script order or file path.");
+      }
+    }
+
+    model = await window.loadUSELite();
+    console.log("✅ USE Lite model loaded.");
+  }
+  return model;
+}*/
+
+// Load USE Lite model from local path
 async function loadModel() {
   if (!model) {
-    model = await window.universalSentenceEncoder.load();
+    if (!window.use) {
+      // wait for USE library to be available
+      let attempts = 0;
+      while (!window.use && attempts < 50) {
+        await new Promise(r => setTimeout(r, 100));
+        attempts++;
+      }
+      if (!window.use) {
+        throw new Error("❌ USE library not loaded — check script order or file path.");
+      }
+    }
+
+    model = await window.use.load({
+      modelUrl: 'assets/models/use_model/model.json'
+    });
+    //console.log("✅ USE Lite model loaded.");
   }
   return model;
 }
+
+// Example usage in classifier
+/*async function classifyInput(text) {
+  if (!model) await loadModel();
+
+  const embeddings = await model.embed([text]);
+  const embedding = embeddings.arraySync()[0];
+
+  // Your centroid classification logic here...
+  return embedding;
+}*/
+
+// Expose globally
+//window.classifyInput = classifyInput;
+
+
+
 
 /**
  * Compute cosine similarity between two vectors
@@ -65,9 +118,12 @@ function classifyWithCentroids(embedding, centroids) {
  */
 async function classifyInput(text) {
   if (!model) await loadModel();
-  if (!Object.keys(intentCentroids).length) await loadCentroids();
+  //if (!Object.keys(intentCentroids).length) await loadCentroids();
 
   const embeddings = await model.embed([text]);
+  //const array = embeddings.arraySync();   // immediate conversion
+  //console.log(array[0]);                   // first embedding
+  if (!Object.keys(intentCentroids).length) await loadCentroids();
   const embedding = embeddings.arraySync()[0];
 
   return {

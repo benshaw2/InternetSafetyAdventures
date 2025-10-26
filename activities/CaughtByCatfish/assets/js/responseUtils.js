@@ -5,7 +5,9 @@ let responseData = [];
 // Load response matrix from JSON
 async function loadResponseMatrix() {
   if (!responseData.length) {
-    const res = await fetch('assets/data/response_matrix_styled.json');
+    //const res = await fetch('assets/data/response_matrix_styled.json');
+    //const res = await fetch('assets/data/response_matrix.json');
+    const res = await fetch('assets/data/augmented_response_matrix.json');
     responseData = await res.json();
   }
   return responseData;

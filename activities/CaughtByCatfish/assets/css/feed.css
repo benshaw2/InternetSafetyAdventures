@@ -176,7 +176,7 @@ button {
   padding: 0.5em;
 }
 
-.chat-message {
+/*.chat-message {
   margin-bottom: 0.5em;
   padding: 0.4em 0.6em;
   border-radius: 8px;
@@ -194,7 +194,7 @@ button {
   background: #e0e0e0;
   color: #333;
   align-self: flex-start;
-}
+}*/
 
 .system-message {
   background: #ffd;
@@ -812,5 +812,98 @@ button {
   text-decoration: underline;
 }
 
+/* just paste more... it's easy */
+/* User messages (blue, right-aligned) */
+.user-message .bubble {
+  background-color: #007bff;
+  color: white;
+  align-self: flex-end;
+}
 
+/* Catfisher messages (gray, left-aligned) */
+.catfisher-message .bubble {
+  background-color: #e0e0e0;
+  color: black;
+  align-self: flex-start;
+}
+
+/* General chat bubble styling */
+.message {
+  display: flex;
+  margin: 8px 0;
+}
+
+.bubble {
+  padding: 10px 14px;
+  border-radius: 18px;
+  max-width: 70%;
+  word-wrap: break-word;
+}
+
+/* Optionally: subtle animation */
+.bubble {
+  animation: fadeIn 0.2s ease-in;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+.message {
+  display: flex;
+  margin: 10px 0;
+}
+
+.bubble {
+  padding: 10px 16px;
+  border-radius: 20px;
+  max-width: 70%;
+  font-size: 15px;
+  line-height: 1.4;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  animation: fadeIn 0.2s ease-in;
+  word-wrap: break-word;
+}
+
+/* User (right) */
+.user-message {
+  justify-content: flex-end;
+}
+.user-message .bubble {
+  background-color: #007bff;
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+/* Catfisher (left) */
+.catfisher-message {
+  justify-content: flex-start;
+}
+.catfisher-message .bubble {
+  background-color: #e0e0e0;
+  color: #222;
+  border-bottom-left-radius: 4px;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Optional: typing indicator */
+.bubble.typing span {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: #ccc;
+  border-radius: 50%;
+  margin: 0 2px;
+  animation: blink 1.4s infinite both;
+}
+@keyframes blink {
+  0%, 80%, 100% { opacity: 0.3; }
+  40% { opacity: 1; }
+}
 

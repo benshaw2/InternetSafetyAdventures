@@ -318,7 +318,7 @@ function createPost(username, contentHtml, imageDataUrl) {
 
   // --- TEEN GIRL SPECIAL POST ---
   const teenPost = {
-    user: "@puppygirl12",
+    user: "@sophiesummer14",
     text: "Trying a new look today... what do you think? 💕",
     img: "assets/img/fake_posts/selfie1.png"
   };

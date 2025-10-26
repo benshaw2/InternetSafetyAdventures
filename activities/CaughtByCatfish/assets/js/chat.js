@@ -16,6 +16,9 @@ const chatManager = new ChatManager();
 function addMessage(text, sender = 'user') {
   const msgContainer = document.createElement('div');
   msgContainer.classList.add('message', sender);
+  
+  if (sender === 'user') msgContainer.classList.add('user-message');
+  else if (sender === 'bot') msgContainer.classList.add('catfisher-message');
 
   const msgBubble = document.createElement('div');
   msgBubble.classList.add('bubble');
@@ -37,10 +40,10 @@ window.appendUserMessage = function(text) {
   addMessage(text, 'user');
 };
 
-window.sendMessageToCatfisher = async function(userText, callback) {
-  const reply = await chatManager.processInput(userText);
-  callback(reply);
-};
+//window.sendMessageToCatfisher = async function(userText, callback) {
+//  const reply = await chatManager.processInput(userText);
+//  callback(reply);
+//};
 
 /* ===============================
    Input Handling
@@ -113,4 +116,101 @@ window.addEventListener('DOMContentLoaded', async () => {
   const greeting = await chatManager.getInitialMessage();
   if (greeting) addMessage(greeting, 'bot');
 });
+
+
+/**
+ * Ending screens
+ */
+function showGoodJob() {
+  chatContainer.classList.add("hidden");
+  endingOverlay.classList.remove("hidden");
+  //endingOverlay.classList.add("visible");
+  requestAnimationFrame(() => endingOverlay.classList.add("visible"));
+  
+  endingOverlay.innerHTML = `
+    <div class="ending-card goodjob">
+      <h2>👏 Good Job!</h2>
+      <p>You noticed something didn’t feel right and left before sharing too much. That’s exactly what you should do online.</p>
+      <button onclick="restartChat()">Try Again</button>
+    </div>
+  `;
+  
+  // Auto-hide after 10 seconds (optional)
+  //setTimeout(() => {
+  //  endingOverlay.classList.remove("visible");
+  //  setTimeout(() => endingOverlay.classList.add("hidden"), 500);
+  //}, 10000);
+  setTimeout(() => {
+    window.location.href = "takeaway.html";
+  }, 8000);
+}
+
+function showGotcha(reason) {
+  chatContainer.classList.add("hidden");
+  endingOverlay.classList.remove("hidden");
+  //endingOverlay.classList.add("visible");
+  requestAnimationFrame(() => endingOverlay.classList.add("visible"));
+
+  let message = "";
+  switch (reason) {
+    case "info":
+      message = "Oops — you shared some personal details with someone you don’t really know. That’s how strangers can build trust online.";
+      break;
+    case "meeting":
+      message = "Yikes — you agreed to meet up with someone from the internet. That can be dangerous in real life. Always tell an adult first.";
+      break;
+    case "exit":
+      message = "You left the chat, but not before sharing some risky info. Think about what you’d do differently next time.";
+      break;
+    case "timeout":
+    default:
+      message = "The chat went on for a while. Even friendly-seeming strangers can have bad intentions — stay cautious.";
+  }
+
+  endingOverlay.innerHTML = `
+    <div class="ending-card gotcha">
+      <h2>⚠️ Gotcha!</h2>
+      <p>${message}</p>
+      <!-- <button onclick="restartChat()">Try Again</button> -->
+    </div>
+  `;
+  
+  // Redirect to summary page after short delay
+  setTimeout(() => {
+    window.location.href = "takeaway.html";
+  }, 8000);
+}
+
+function restartChat() {
+  location.reload();
+}
+
+/**
+ * Exit chat button logic
+ */
+document.getElementById("exitChat").addEventListener("click", () => {
+  const currentChatUser = document.getElementById("chatUsername").textContent;
+  const endingOverlay = document.getElementById("endingOverlay");
+  
+  const trustLevel = chatManager.trustLevel ?? 0;
+  const infoShared = chatManager.infoShared ?? new Set();
+  const catfisherName = chatManager.catfisherName ?? "Unknown User";
+
+  // Only trigger 'good job' for catfisher
+  if (chatManager.infoShared.size === 0 && !chatManager.meetingSuggested) {
+    showGoodJob();
+  } else {
+    showGotcha("exit");
+  }
+
+  // Close the chat UI
+  const chatContainer = document.getElementById("chatContainer");
+  chatContainer.classList.add("hidden");
+  chatContainer.classList.remove("active");
+});
+
+chatManager.onChatEnd = (reason) => {
+  if (reason === "goodjob") showGoodJob();
+  else showGotcha(reason);
+};
 

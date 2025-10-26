@@ -19,7 +19,15 @@ class ChatManager {
     this.recentIntents = [];
     this.recentRisks = [];
     this.onPhaseChange = null;
+    this.trustLevel = 0;
+    this.infoShared = new Set();
+    this.catfisherName = null;
+    this.meetingSuggested = false;
+    this.turnCount = 0;
+    this.onChatEnd = null;
   }
+  
+  //setCatfisherName(name) 
 
   async getInitialMessage() {
     const greeting = "Hey! I just saw your post — looks cool 😄";
@@ -32,7 +40,7 @@ class ChatManager {
     return greeting;
   }
 
-  async processInput(userText) {
+  /*async processInput(userText) {
     const timestamp = Date.now();
     const classification = await classifyInput(userText);
     const { intent, type, risk, style } = classification;
@@ -61,11 +69,12 @@ class ChatManager {
     }
 
     // Choose response
+    const data = await this.responses;
     const { variant: reply, fallbackLevel } = chooseResponse(
       this.strategy,
       this.phase,
       style,
-      this.responses,
+      data, //this.responses,
       true // enable fallback tracking
     );
 
@@ -86,7 +95,113 @@ class ChatManager {
       goal: this.inferGoal(this.strategy)
     });
 
+    this.turnCount = (this.turnCount || 0) + 1;
+    this.checkChatEndConditions();
     return reply;
+  }*/
+  
+async processInput(userText) {
+  const timestamp = Date.now();
+  const classification = await classifyInput(userText);
+  const { intent, type, risk, style } = classification;
+
+  // Update recent context
+  this.recentIntents.push(intent);
+  this.recentRisks.push(risk);
+  if (this.recentIntents.length > 3) this.recentIntents.shift();
+  if (this.recentRisks.length > 3) this.recentRisks.shift();
+
+  // --- NEW: Keyword & trust tracking (for ending conditions) ---
+  const textLower = userText.toLowerCase();
+
+  // Personal info detection
+  const personalInfoKeywords = [
+    "school", "class", "grade", "city", "town", "address", "phone", "number",
+    "snap", "snapchat", "instagram", "tiktok", "discord", "house", "where", "live"
+  ];
+  for (const k of personalInfoKeywords) {
+    if (textLower.includes(k)) this.infoShared.add(k);
+  }
+
+  // Meeting suggestion detection
+  const meetingKeywords = [
+    "meet", "hang", "call", "come over", "see you", "in person", "video chat", "park", "mall"
+  ];
+  for (const k of meetingKeywords) {
+    if (textLower.includes(k)) this.meetingSuggested = true;
+  }
+
+  // Adjust trust level heuristically
+  if (userText.length > 20) this.trustLevel++;
+  if (userText.match(/(ok|sure|yes|yeah|cool|lol)/i)) this.trustLevel++;
+  if (this.trustLevel > 10) this.trustLevel = 10;
+
+  // Log user message with metadata
+  this.history.push({
+    role: "user",
+    text: userText,
+    classification,
+    timestamp
+  });
+
+  // Update phase and strategy
+  const oldPhase = this.phase;
+  this.updatePhase(intent, risk);
+  this.updateStrategy(intent, risk);
+
+  if (this.onPhaseChange && oldPhase !== this.phase) {
+    this.onPhaseChange(this.phase);
+  }
+
+  // Choose response
+  const data = await this.responses;
+  const { variant: reply, fallbackLevel } = chooseResponse(
+    this.strategy,
+    this.phase,
+    style,
+    data,
+    true // enable fallback tracking
+  );
+
+  // Log bot response
+  this.history.push({
+    role: "bot",
+    text: reply,
+    strategy: this.strategy,
+    phase: this.phase,
+    fallback: fallbackLevel,
+    timestamp: Date.now()
+  });
+
+  // Track goal
+  this.goals.push({
+    phase: this.phase,
+    strategy: this.strategy,
+    goal: this.inferGoal(this.strategy)
+  });
+
+  // --- Increment turn and check for endings ---
+  this.turnCount = (this.turnCount || 0) + 1;
+  this.checkChatEndConditions();
+
+  return reply;
+}
+
+
+  
+  checkChatEndConditions() {
+    if (this.meetingSuggested) {
+      this.onChatEnd?.("meeting");
+      return;
+    }
+    if (this.infoShared && this.infoShared.size > 1) {
+      this.onChatEnd?.("info");
+      return;
+    }
+    if ((this.turnCount || 0) >= 12) {
+      this.onChatEnd?.("timeout");
+      return;
+    }
   }
 
   updatePhase(intent, risk) {

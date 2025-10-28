@@ -9,6 +9,7 @@ const sendButton = document.getElementById("chatSend"); //('send-button');
 
 // Instantiate the ChatManager (core conversation logic)
 const chatManager = new ChatManager();
+//await chatManager.init();
 
 /* ===============================
    Message Rendering
@@ -57,7 +58,33 @@ async function handleSend() {
   chatInput.value = '';
   chatInput.focus();
 
-  // Get AI/Simulated Response
+  const currentChatUser = document.getElementById("chatUsername")?.textContent?.trim() || "";
+  //console.log(currentChatUser);
+  //console.log(catfisherName);
+
+  if (currentChatUser === catfisherName) {
+    // Only catfisher responds
+    addTypingIndicator();
+    try {
+      const reply = await chatManager.processInput(text);
+      //removeTypingIndicator();
+      //addMessage(reply, 'bot');
+      setTimeout(() => {
+        removeTypingIndicator();
+        addMessage(reply, 'bot');
+      }, 3000);
+    } catch (err) {
+      removeTypingIndicator();
+      console.error('Chat processing error:', err);
+      addMessage('Something went wrong — please try again.', 'bot');
+    }
+  } else {
+    // No typing indicator, no bot response
+    //console.log(`No response: ${currentChatUser} is not the catfisher.`);
+  }
+
+  
+  /*// Get AI/Simulated Response
   addTypingIndicator();
   try {
     const reply = await chatManager.processInput(text);
@@ -67,7 +94,7 @@ async function handleSend() {
     removeTypingIndicator();
     console.error('Chat processing error:', err);
     addMessage('Something went wrong — please try again.', 'bot');
-  }
+  }*/
 }
 
 /* ===============================
@@ -106,10 +133,10 @@ chatInput.addEventListener('keydown', (e) => {
 /* ===============================
    Optional Phase Display
 ================================ */
-chatManager.onPhaseChange = (newPhase) => {
-  console.log(`🎯 Conversation phase changed → ${newPhase}`);
+//chatManager.onPhaseChange = (newPhase) => {
+//  console.log(`🎯 Conversation phase changed → ${newPhase}`);
   // You could update a phase indicator in the UI here
-};
+//};
 
 // Initial greeting (optional)
 window.addEventListener('DOMContentLoaded', async () => {
@@ -148,7 +175,6 @@ function showGoodJob() {
 function showGotcha(reason) {
   chatContainer.classList.add("hidden");
   endingOverlay.classList.remove("hidden");
-  //endingOverlay.classList.add("visible");
   requestAnimationFrame(() => endingOverlay.classList.add("visible"));
 
   let message = "";
@@ -171,10 +197,22 @@ function showGotcha(reason) {
     <div class="ending-card gotcha">
       <h2>⚠️ Gotcha!</h2>
       <p>${message}</p>
-      <!-- <button onclick="restartChat()">Try Again</button> -->
     </div>
   `;
-  
+
+  // Save session data for takeaway screen
+  localStorage.setItem("trustLevel", chatManager.trustLevel.toString());
+  localStorage.setItem("infoShared", chatManager.infoShared.size.toString());
+  localStorage.setItem("turnCount", chatManager.turnCount.toString());
+
+  const takeawayMessage = chatManager.phase === "Risk Escalation"
+    ? "This chat escalated quickly. Be cautious when someone online tries to isolate you or push boundaries."
+    : "Remember: online conversations can build false trust quickly. Always think twice before sharing anything personal.";
+
+  localStorage.setItem("takeawayMessage", takeawayMessage);
+  localStorage.setItem("chatHistory", JSON.stringify(chatManager.getHistory()));
+  localStorage.setItem("chatGoals", JSON.stringify(chatManager.getConversationGoals()));
+
   // Redirect to summary page after short delay
   setTimeout(() => {
     window.location.href = "takeaway.html";
@@ -194,11 +232,13 @@ document.getElementById("exitChat").addEventListener("click", () => {
   
   const trustLevel = chatManager.trustLevel ?? 0;
   const infoShared = chatManager.infoShared ?? new Set();
-  const catfisherName = chatManager.catfisherName ?? "Unknown User";
+  //const catfisherName = chatManager.catfisherName ?? "Unknown User";
 
   // Only trigger 'good job' for catfisher
   if (chatManager.infoShared.size === 0 && !chatManager.meetingSuggested) {
-    showGoodJob();
+    if (currentChatUser === catfisherName) {
+      showGoodJob();
+    }
   } else {
     showGotcha("exit");
   }

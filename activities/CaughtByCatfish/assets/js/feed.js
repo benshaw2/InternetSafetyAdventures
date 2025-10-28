@@ -456,7 +456,42 @@ function createPost(username, contentHtml, imageDataUrl) {
     }
 
     chatUsernameEl.textContent = username;
+    //document.getElementById("chatUsernameBtn").textContent = `@${username} ⌄`;
+    //const chatUsernameEl = document.getElementById("chatUsername");
+    //const usernameTextNode = chatUsernameEl.childNodes[0];
+    //if (usernameTextNode) {
+    //  usernameTextNode.nodeValue = `@${username} `;
+    //}
   }
+  
+/*  // Toggle dropdown visibility
+document.getElementById("chatUsernameBtn").addEventListener("click", () => {
+  const dropdown = document.getElementById("chatDropdown");
+  dropdown.classList.toggle("hidden");
+});
+
+// Handle friend request
+document.getElementById("sendFriendRequest").addEventListener("click", () => {
+  if (window.friendRequestSent) return;
+
+  window.friendRequestSent = true;
+  document.getElementById("sendFriendRequest").textContent = "Request Sent";
+  document.getElementById("sendFriendRequest").style.color = "#888";
+  document.getElementById("sendFriendRequest").style.cursor = "default";
+
+  // Optional: trigger trust score increase or notify ChatManager
+  if (typeof increaseTrustScore === "function") {
+    increaseTrustScore("friendRequest");
+  }
+});
+
+function addFriend(username) {
+  const friendList = document.getElementById("friendsUl");
+  friendList.innerHTML = ""; // Clear placeholder
+  const li = document.createElement("li");
+  li.textContent = username;
+  friendList.appendChild(li);
+}*/
 
   function closeChat() {
     chatContainer.classList.add("hidden");

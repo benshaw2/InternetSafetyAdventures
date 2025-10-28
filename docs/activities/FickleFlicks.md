@@ -1,6 +1,6 @@
-# WrongLink Activity Documentation
+# FickleFlicks Activity Documentation
 
-WrongLink is an educational simulation designed to teach children about the importance of verifying links before clicking them.
+FickleFlicks is an educational simulation designed to teach children about the importance of verifying links before clicking them.
 
 It uses a mock “kids’ streaming site” to create a safe, hands-on learning moment. When users attempt to watch a video, they are redirected to an explanatory page that reveals the trick and discusses how to stay safe online.
 
@@ -17,7 +17,7 @@ It uses a mock “kids’ streaming site” to create a safe, hands-on learning 
 -------------------------------------------------------------------
 
 ```bash
-activities/WrongLink/
+activities/FickleFlicks/
 ├── index.html      → main mock streaming interface
 ├── redirect.html   → transitional “loading” animation page
 ├── gotcha.html     → educational explanation and safety lesson

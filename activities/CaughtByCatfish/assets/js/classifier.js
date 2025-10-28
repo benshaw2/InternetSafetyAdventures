@@ -97,7 +97,7 @@ function cosineSimilarity(vecA, vecB) {
 /**
  * Find the closest label from a centroid map
  */
-function classifyWithCentroids(embedding, centroids) {
+/*function classifyWithCentroids(embedding, centroids) {
   let bestLabel = null;
   let bestScore = -Infinity;
 
@@ -111,7 +111,40 @@ function classifyWithCentroids(embedding, centroids) {
   }
 
   return bestLabel;
+}*/
+
+function classifyWithCentroidsKNN(embedding, centroids, k = 5) {
+  const scoredLabels = [];
+
+  for (const label in centroids) {
+    for (const centroid of centroids[label]) {
+      const score = cosineSimilarity(embedding, centroid);
+      scoredLabels.push({ label, score });
+    }
+  }
+
+  // Sort by similarity score descending
+  scoredLabels.sort((a, b) => b.score - a.score);
+
+  // Take top-k
+  const topK = scoredLabels.slice(0, k);
+
+  // Count label frequencies
+  const labelCounts = {};
+  for (const { label } of topK) {
+    labelCounts[label] = (labelCounts[label] || 0) + 1;
+  }
+
+  // Return label with highest frequency (break ties by highest score)
+  return topK.reduce((best, current) => {
+    const currentCount = labelCounts[current.label];
+    const bestCount = labelCounts[best.label];
+    if (currentCount > bestCount) return current;
+    if (currentCount === bestCount && current.score > best.score) return current;
+    return best;
+  }).label;
 }
+
 
 /**
  * Main classification function
@@ -125,12 +158,18 @@ async function classifyInput(text) {
   //console.log(array[0]);                   // first embedding
   if (!Object.keys(intentCentroids).length) await loadCentroids();
   const embedding = embeddings.arraySync()[0];
+  
+  //console.log("Embedding:", embedding);
+  //console.log("Intent:", classifyWithCentroidsKNN(embedding, intentCentroids, 5));
+  //console.log("Type:", classifyWithCentroidsKNN(embedding, typeCentroids, 5));
+  //console.log("Risk:", classifyWithCentroidsKNN(embedding, riskCentroids, 5));
+  //console.log("Style:", classifyWithCentroidsKNN(embedding, styleCentroids, 5));
 
   return {
-    intent: classifyWithCentroids(embedding, intentCentroids),
-    type: classifyWithCentroids(embedding, typeCentroids),
-    risk: classifyWithCentroids(embedding, riskCentroids),
-    style: classifyWithCentroids(embedding, styleCentroids)
+    intent: classifyWithCentroidsKNN(embedding, intentCentroids, 5),
+    type: classifyWithCentroidsKNN(embedding, typeCentroids, 5),
+    risk: classifyWithCentroidsKNN(embedding, riskCentroids, 5),
+    style: classifyWithCentroidsKNN(embedding, styleCentroids, 5)
   };
 }
 

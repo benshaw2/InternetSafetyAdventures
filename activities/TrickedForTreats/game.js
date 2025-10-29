@@ -27,10 +27,11 @@ const questions = [
   { text: "What’s your favorite color?", type: 1 },
   { text: "What’s your mother’s maiden name?", type: 2 },
   { text: "What was the name of your first pet?", type: 2 },
-  { text: "What’s your favorite teacher’s name?", type: 2 },
-  { text: "What is your first name?", type: 3 },
-  { text: "When is your birthday (month and day)?", type: 3 },
-  { text: "How old are you?", type: 3 }
+  { text: "What was the name of your first teacher’s name?", type: 2 },
+  { text: "How old are you?", type: 3 },
+  { text: "What is your birthday?", type: 3 },
+  { text: "What is your name?", type: 3 }
+  /*{ text: "When is your birthday (month and day)?", type: 3 },*/
 ];
 
 // Reward curve
@@ -38,14 +39,14 @@ const rewards = [10,10,10,15,15,15,20,20,20];
 
 // Fake players
 let fakePlayers = [
-  { name: "CandyGhost", candy: 80 },
-  { name: "Witchy", candy: 75 },
-  { name: "SpookyKid", candy: 70 },
-  { name: "PumpkinPal", candy: 65 },
-  { name: "ToffeeTom", candy: 60 },
-  { name: "BooBuddy", candy: 58 },
-  { name: "MallowMonster", candy: 55 },
-  { name: "ChocoBat", candy: 52 }
+  { name: "CandyGhost", candy: 60 },
+  { name: "Witchy", candy: 55 },
+  { name: "SpookyKid", candy: 30 },
+  { name: "PumpkinPal", candy: 15 },
+  { name: "ToffeeTom", candy: 10 },
+  { name: "BooBuddy", candy: 18 },
+  { name: "MallowMonster", candy: 15 },
+  { name: "ChocoBat", candy: 12 }
 ];
 
 let player = { name: "You", candy: 0 };

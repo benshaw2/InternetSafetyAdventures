@@ -9,5 +9,5 @@ setTimeout(() => {
   setTimeout(() => {
     window.location.href = 'takeaway.html';
   }, 1200);
-}, 4500); // Wait ~4.5 seconds before starting fade
+}, 8000); // Wait ~4.5 seconds before starting fade
 
